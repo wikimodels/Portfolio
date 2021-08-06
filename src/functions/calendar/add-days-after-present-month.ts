@@ -8,15 +8,14 @@ import { addLeadingZero } from './add-leading-zero';
 
 export function addDaysAfterPresentMonth(
   days: CalendarDay[],
-  month: number,
-  year: number
+  monthNumber: number,
+  yearNumber: number
 ): CalendarDay[] {
-  const lastDayOfMonthDate = `${year}-${addLeadingZero(month)}-${
+  const lastDayOfMonthDate = `${yearNumber}-${addLeadingZero(monthNumber)}-${
     days[days.length - 1].dayNumberStr
   }`;
 
   const lastDayOfWeek = days[days.length - 1].dayOfWeek;
-  console.log('first day of week', lastDayOfWeek);
 
   for (let i = 1; i <= 7 - lastDayOfWeek; i++) {
     const dayAfter: CalendarDay = {
@@ -33,15 +32,18 @@ export function addDaysAfterPresentMonth(
       ),
       dayNumberNmr: moment(lastDayOfMonthDate).add(i, 'days').date(),
       dayOfWeek: moment(lastDayOfMonthDate).add(i, 'days').isoWeekday(),
-      dayActivityType: DayActivityType.TO_BE_DEFINED,
+      dayActivityType: DayActivityType.UNDEFINED,
       dayDateStr: moment(lastDayOfMonthDate)
         .add(i, 'days')
         .locale(LOCALE)
         .format('DD MMM YYYY'),
       dayMomentumType: DayMomentumType.FUTURE,
+      dayCSS: 'mat-' + DayActivityType.UNDEFINED,
+      monthNumber: moment(lastDayOfMonthDate).date(i).month(),
+      yearNumber: moment(lastDayOfMonthDate).date(i).year(),
     };
     days.push(dayAfter);
   }
-  console.log('AFTER DAYS', days);
+
   return days;
 }

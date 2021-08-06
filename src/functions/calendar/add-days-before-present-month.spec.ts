@@ -15,6 +15,9 @@ describe('Add Days before Present Month', () => {
       dayNumberStr: '28',
       dayOfWeek: 1,
       dayDateStr: '28 Dec 2020',
+      monthNumber: 12,
+      yearNumber: 2020,
+      dayCSS: 'mat-' + DayActivityType.UNDEFINED,
     };
     let days = fillInCalendarDays(1, 2021);
     let calendarGrid = addDaysBeforePresentMonth(days, 1, 2021);
@@ -31,6 +34,9 @@ describe('Add Days before Present Month', () => {
       dayNumberNmr: 1,
       dayOfWeek: 1,
       dayDateStr: '01 Mar 2021',
+      monthNumber: 3,
+      yearNumber: 2021,
+      dayCSS: 'mat-' + DayActivityType.TO_BE_DEFINED,
     };
 
     let days = fillInCalendarDays(3, 2021);

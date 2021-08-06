@@ -23,6 +23,6 @@ export function fillInCalendarMonths(
     };
     calendarMonths.push(month);
   }
-  console.log('CALENDAR MONTH', calendarMonths);
+
   return calendarMonths;
 }

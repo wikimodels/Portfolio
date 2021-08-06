@@ -1,4 +1,3 @@
-import { RouterTestingModule } from '@angular/router/testing';
 import { AppMaterialModule } from './../material.module';
 import { MatAccordionHarness } from '@angular/material/expansion/testing';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
@@ -22,41 +21,41 @@ describe('home component', () => {
     loader = TestbedHarnessEnvironment.loader(fixture);
   });
 
-  it('should work', async () => {
-    const buttons = await loader.getAllHarnesses(MatButtonHarness); // length: 3
-    const firstButton = await loader.getHarness<MatButtonHarness>(
-      MatButtonHarness
-    ); // === buttons[0]
-    await firstButton.click();
-    expect(fixture.componentInstance.hidden).toBe(true);
-    await firstButton.click();
-    console.log(fixture);
-    expect(fixture.componentInstance.hidden).toBe(false);
-  });
+  // it('should work', async () => {
+  //   const buttons = await loader.getAllHarnesses(MatButtonHarness); // length: 3
+  //   const firstButton = await loader.getHarness<MatButtonHarness>(
+  //     MatButtonHarness
+  //   ); // === buttons[0]
+  //   await firstButton.click();
+  //   expect(fixture.componentInstance.hidden).toBe(true);
+  //   await firstButton.click();
+  //   console.log(fixture);
+  //   expect(fixture.componentInstance.hidden).toBe(false);
+  // });
 
-  it('panel title equals Welcome', async () => {
-    const panelsHarness = await loader.getHarness<MatAccordionHarness>(
-      MatAccordionHarness
-    );
-    const panel = await panelsHarness.getExpansionPanels();
-    const title = await panel[0].getTitle();
-    console.log(title);
-    expect(title).toEqual('Welcome');
-  });
+  // it('panel title equals Welcome', async () => {
+  //   const panelsHarness = await loader.getHarness<MatAccordionHarness>(
+  //     MatAccordionHarness
+  //   );
+  //   const panel = await panelsHarness.getExpansionPanels();
+  //   const title = await panel[0].getTitle();
+  //   console.log(title);
+  //   expect(title).toEqual('Welcome');
+  // });
 
-  it('panel title equals I am the content!', async () => {
-    const panelsHarness = await loader.getHarness<MatAccordionHarness>(
-      MatAccordionHarness
-    );
-    const panel = await panelsHarness.getExpansionPanels();
-    const content = await panel[0].getTextContent();
-    console.log(content);
-    await fixture.componentInstance.fuckIt();
-    expect(fixture.componentInstance.hidden).toEqual(true);
-    await fixture.componentInstance.fuckIt();
-    expect(fixture.componentInstance.hidden).toEqual(false);
-    expect(content).toEqual('I am the content!');
-  });
+  // it('panel title equals I am the content!', async () => {
+  //   const panelsHarness = await loader.getHarness<MatAccordionHarness>(
+  //     MatAccordionHarness
+  //   );
+  //   const panel = await panelsHarness.getExpansionPanels();
+  //   const content = await panel[0].getTextContent();
+  //   console.log(content);
+  //   await fixture.componentInstance.fuckIt();
+  //   expect(fixture.componentInstance.hidden).toEqual(true);
+  //   await fixture.componentInstance.fuckIt();
+  //   expect(fixture.componentInstance.hidden).toEqual(false);
+  //   expect(content).toEqual('I am the content!');
+  // });
 });
 
 // changeDetectorRef: RootViewRef {_lView: LRootView(31), _cdRefInjectingView: undefined, _appRef: null, _viewContainerRef: null, _view: LRootView(31)}

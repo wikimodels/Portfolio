@@ -8,6 +8,9 @@ export interface CalendarDay {
   dayNumberStr: string;
   dayDateStr: string;
   dayOfWeek: number;
+  dayCSS: string;
   dayActivityType: DayActivityType;
   dayMomentumType: DayMomentumType;
+  monthNumber: number;
+  yearNumber: number;
 }

@@ -6,6 +6,8 @@ describe('Fill In Calendar Days', () => {
     const obj = fillInCalendarDays(1, 2021);
 
     expect(obj.length).toEqual(31);
+    expect(obj[0].yearNumber).toEqual(2021);
+    expect(obj[0].monthNumber).toEqual(1);
     expect(obj[0].dayNameLong).toEqual('Friday');
     expect(obj[0].dayNameShort).toEqual('Fri');
     expect(obj[0].dayNumberNmr).toEqual(1);

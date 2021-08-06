@@ -25,6 +25,9 @@ export function fillInCalendarDays(monthNumber: number, yearNumber: number) {
       dayDateStr: moment(date).locale(LOCALE).format('DD MMM YYYY'),
       dayActivityType: DayActivityType.TO_BE_DEFINED,
       dayMomentumType: DayMomentumType.PRESENT,
+      dayCSS: 'mat-' + DayActivityType.TO_BE_DEFINED,
+      monthNumber: monthNumber,
+      yearNumber: yearNumber,
     };
     calendarDays.push(calendarDay);
   }

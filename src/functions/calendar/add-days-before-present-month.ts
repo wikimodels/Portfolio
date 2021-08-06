@@ -8,10 +8,10 @@ import { addLeadingZero } from './add-leading-zero';
 
 export function addDaysBeforePresentMonth(
   days: CalendarDay[],
-  month: number,
-  year: number
+  monthNumber: number,
+  yearNumber: number
 ): CalendarDay[] {
-  const firstDayOfMonthDate = `${year}-${addLeadingZero(month)}-${
+  const firstDayOfMonthDate = `${yearNumber}-${addLeadingZero(monthNumber)}-${
     days[0].dayNumberStr
   }`;
 
@@ -34,13 +34,14 @@ export function addDaysBeforePresentMonth(
         .date(-i)
         .locale(LOCALE)
         .format('DD MMM YYYY'),
-      dayActivityType: DayActivityType.UNDEFINED,
       dayMomentumType: DayMomentumType.PAST,
+      dayActivityType: DayActivityType.UNDEFINED,
+      dayCSS: 'mat-' + DayActivityType.UNDEFINED,
+      monthNumber: moment(firstDayOfMonthDate).date(-i).month(),
+      yearNumber: moment(firstDayOfMonthDate).date(-i).year(),
     };
     days.unshift(dayBefore);
   }
-
-  console.log('BEFORE DAYS', days);
   return days;
 }
 

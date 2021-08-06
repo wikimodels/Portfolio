@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { CALENDAR } from 'src/const/routes.const';
 
 @Component({
   selector: 'app-home',
@@ -6,11 +8,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  constructor() {}
+  constructor(private router: Router) {}
   hidden = false;
   ngOnInit(): void {}
-  fuckIt() {
-    this.hidden = !this.hidden;
-    console.log(this.hidden);
+  goToCalendar() {
+    this.router.navigate([CALENDAR]);
   }
 }

@@ -1,4 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.icon {
+  cursor: pointer;
+}
+/* Activity Types */
+.mat-working-day {
+  background-color: #34d800;
+  color: #fff;
+}
+
+.mat-day-off {
+  background-color: #ff9c00;
+  color: #fff;
+}
+
+.mat-undefined {
+  background-color: #6a0aab;
+  color: #fff;
+}
+.mat-to-be-defined {
+  background-color: #6a0aab;
+  color: #fff;
+}
+.container {
+  padding-top: 20px;
+  padding-bottom: 40px;
+}

@@ -1,0 +1,26 @@
+<ng-container *ngIf="!deviceDetectorService.isMobile()">
+  <button mat-fab [color]="day.dayActivityType" [matMenuTriggerFor]="menu" [disabled]="dayDisabled">
+    {{ day.dayNumberStr }}
+  </button>
+</ng-container>
+
+<ng-container *ngIf="deviceDetectorService.isMobile()">
+  <button mat-mini-fab [color]="day.dayActivityType" [matMenuTriggerFor]="menu" [disabled]="dayDisabled">
+    {{ day.dayNumberStr }}
+  </button>
+</ng-container>
+
+<mat-menu #menu="matMenu" yPosition="below">
+  <ng-template matMenuContent>
+    <button mat-menu-item>{{ day.dayDateStr }}</button>
+    <button mat-menu-item [matMenuTriggerFor]="dayStatus">Статус</button>
+  </ng-template>
+</mat-menu>
+
+<mat-menu #dayStatus="matMenu" yPosition="below">
+  <ng-template matMenuContent>
+    <button mat-menu-item (click)="changeToWorkingDay()">Рабочий</button>
+    <button mat-menu-item (click)="changeToDayOff()">Нерабочий</button>
+    <button mat-menu-item (click)="changeToBeDefined()">Не определён</button>
+  </ng-template>
+</mat-menu>
