@@ -1,3 +1,12 @@
 .navbar-icon {
   padding-top: 3px;
 }
+.button24 {
+  background-color: #eee;
+  width: 24px;
+  height: 24px;
+}
+.icon24 {
+  font-size: 16px;
+  margin-top: -8px;
+}

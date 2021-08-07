@@ -39,8 +39,8 @@ export function addDaysAfterPresentMonth(
         .format('DD MMM YYYY'),
       dayMomentumType: DayMomentumType.FUTURE,
       dayCSS: 'mat-' + DayActivityType.UNDEFINED,
-      monthNumber: moment(lastDayOfMonthDate).date(i).month(),
-      yearNumber: moment(lastDayOfMonthDate).date(i).year(),
+      monthNumber: moment(lastDayOfMonthDate).add(i, 'days').month() + 1,
+      yearNumber: moment(lastDayOfMonthDate).add(i, 'days').year(),
     };
     days.push(dayAfter);
   }

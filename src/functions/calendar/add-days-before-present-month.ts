@@ -37,7 +37,7 @@ export function addDaysBeforePresentMonth(
       dayMomentumType: DayMomentumType.PAST,
       dayActivityType: DayActivityType.UNDEFINED,
       dayCSS: 'mat-' + DayActivityType.UNDEFINED,
-      monthNumber: moment(firstDayOfMonthDate).date(-i).month(),
+      monthNumber: moment(firstDayOfMonthDate).date(-i).month() + 1,
       yearNumber: moment(firstDayOfMonthDate).date(-i).year(),
     };
     days.unshift(dayBefore);

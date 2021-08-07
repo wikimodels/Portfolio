@@ -2,15 +2,14 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CalendarDayComponent } from './calendar-day.component';
 
-describe('CalendarDayComponent', () => {
+xdescribe('CalendarDayComponent', () => {
   let component: CalendarDayComponent;
   let fixture: ComponentFixture<CalendarDayComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CalendarDayComponent ]
-    })
-    .compileComponents();
+      declarations: [CalendarDayComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

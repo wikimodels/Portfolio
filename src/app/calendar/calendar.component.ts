@@ -1,8 +1,11 @@
+import { CalendarCreateDialogComponent } from './calendar-create-dialog/calendar-create-dialog.component';
 import { Subscription } from 'rxjs';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { getSelectYearNumbers } from 'src/functions/util/getSelectYearNumbers';
+import { getSelectYearNumbers } from 'src/functions/util/get-select-year-numbers';
 import { CalendarYear } from 'src/models/calendar/calendar-year.model';
 import { CalendarService } from './services/calendar.service';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { CalendarShowDialogComponent } from './calendar-show-dialog/calendar-show-dialog.component';
 
 @Component({
   selector: 'app-calendar',
@@ -14,7 +17,10 @@ export class CalendarComponent implements OnInit, OnDestroy {
   calendarYear: CalendarYear;
   sub: Subscription;
 
-  constructor(private calendarService: CalendarService) {
+  constructor(
+    private calendarService: CalendarService,
+    private matDialog: MatDialog
+  ) {
     this.sub = this.calendarService.calendarYear$.subscribe((value) => {
       this.calendarYear = value;
     });
@@ -22,6 +28,16 @@ export class CalendarComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.yearsNumbers = getSelectYearNumbers();
+  }
+
+  openCreateYearDialog() {
+    const dialogConfig = new MatDialogConfig();
+    this.matDialog.open(CalendarCreateDialogComponent, dialogConfig);
+  }
+
+  openShowYearDialog() {
+    const dialogConfig = new MatDialogConfig();
+    this.matDialog.open(CalendarShowDialogComponent, dialogConfig);
   }
 
   ngOnDestroy() {

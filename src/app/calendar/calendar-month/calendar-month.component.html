@@ -1,16 +1,16 @@
-<mat-expansion-panel [expanded]="panelState">
+<mat-expansion-panel [expanded]="panelState" *transloco="let t">
   <mat-expansion-panel-header>
     <mat-panel-title>{{ month.monthNameLong }}</mat-panel-title>
   </mat-expansion-panel-header>
   <ng-template matExpansionPanelContent>
     <mat-grid-list cols="7" rowHeight="1:1" ngClass.xs="small-screen" ngClass.gt-xs="large-screen">
-      <mat-grid-tile>ПН</mat-grid-tile>
-      <mat-grid-tile>ВТ</mat-grid-tile>
-      <mat-grid-tile>СР</mat-grid-tile>
-      <mat-grid-tile>ЧТ</mat-grid-tile>
-      <mat-grid-tile>ПТ</mat-grid-tile>
-      <mat-grid-tile>СБ</mat-grid-tile>
-      <mat-grid-tile>ВС</mat-grid-tile>
+      <mat-grid-tile>{{t('calendar.Mo')}}</mat-grid-tile>
+      <mat-grid-tile>{{t('calendar.Tu')}}</mat-grid-tile>
+      <mat-grid-tile>{{t('calendar.We')}}</mat-grid-tile>
+      <mat-grid-tile>{{t('calendar.Th')}}</mat-grid-tile>
+      <mat-grid-tile>{{t('calendar.Fr')}}</mat-grid-tile>
+      <mat-grid-tile>{{t('calendar.Sa')}}</mat-grid-tile>
+      <mat-grid-tile>{{t('calendar.Su')}}</mat-grid-tile>
       <mat-grid-tile *ngFor="let day of month.calendarDays">
         <app-calendar-day [day]="day"></app-calendar-day>
       </mat-grid-tile>

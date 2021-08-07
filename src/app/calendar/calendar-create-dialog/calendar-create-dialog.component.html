@@ -1,1 +1,59 @@
-<p>calendar-create-dialog works!</p>
+<div fxLayout="column" fxLayoutAlign="center center" style="width: 100%">
+  <h2 style="text-align: center">Создать Год</h2>
+
+  <form [formGroup]="form" class="form">
+    <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="15px">
+      <mat-form-field appearance="fill" class="form">
+        <mat-label>Год деятельности</mat-label>
+        <mat-select formControlName="yearNumber">
+          <mat-option *ngFor="let year of years" [value]="year.value">{{
+            year.key
+            }}</mat-option>
+        </mat-select>
+        <mat-spinner *ngIf="form.get('yearNumber').status === 'PENDING'" matPrefix [diameter]="18"
+          style="float: right; margin-left: 8px"></mat-spinner>
+        <mat-error *ngIf="form.get('yearNumber').errors?.required">Требуется ввести год
+        </mat-error>
+        <mat-error *ngIf="form.get('yearNumber').errors?.invalidYearAsync">
+          Такой год <strong>уже существует</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="form">
+        <mat-label>Месяц начала деятельности</mat-label>
+        <mat-select formControlName="monthFirst">
+          <mat-option *ngFor="let month of months" [value]="month.monthNumber">{{
+            month.monthName
+            }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('monthFirst').errors?.required">Требуется ввести месяц
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="form">
+        <mat-label>Месяц окончания деятельности</mat-label>
+        <mat-select formControlName="monthLast">
+          <mat-option *ngFor="let month of months" [value]="month.monthNumber">{{
+            month.monthName
+            }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('monthLast').errors?.required">Требуется ввести месяц
+        </mat-error>
+      </mat-form-field>
+      <mat-error *ngIf="form.errors?.monthLastLessThanMonthFirst">
+        Месяц конца периода меньше, чем
+        <strong>месяц начала периода</strong>
+      </mat-error>
+
+      <div fxLayout="row" fxLayoutAlign="space-between">
+        <button mat-button color="primary" (click)="onSubmit()">
+          Сохранить
+        </button>
+        <button mat-button (click)="cancel()">
+          Отмена
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

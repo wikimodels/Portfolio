@@ -16,7 +16,7 @@ describe('Add Days after Present Month', () => {
       dayDateStr: '31 Jan 2021',
       dayActivityType: DayActivityType.TO_BE_DEFINED,
       dayMomentumType: DayMomentumType.PRESENT,
-      monthNumber: 4,
+      monthNumber: 1,
       yearNumber: 2021,
       dayCSS: 'mat-' + DayActivityType.TO_BE_DEFINED,
     };
@@ -36,15 +36,16 @@ describe('Add Days after Present Month', () => {
       dayNumberStr: '04',
       dayNumberNmr: 4,
       dayOfWeek: 7,
-      dayActivityType: DayActivityType.TO_BE_DEFINED,
+      dayActivityType: DayActivityType.UNDEFINED,
       dayDateStr: '04 Apr 2021',
       dayMomentumType: DayMomentumType.FUTURE,
       monthNumber: 4,
       yearNumber: 2021,
-      dayCSS: 'mat-' + DayActivityType.TO_BE_DEFINED,
+      dayCSS: 'mat-' + DayActivityType.UNDEFINED,
     };
     let days = fillInCalendarDays(3, 2021);
     let calendarGrid = addDaysAfterPresentMonth(days, 3, 2021);
+    console.log(calendarGrid[calendarGrid.length - 1]);
     expect(calendarGrid[calendarGrid.length - 1]).toEqual(afterDayOfMarch2021);
   });
 });
