@@ -1,8 +1,17 @@
 <ng-container *ngIf="calendarYear">
-  <div fxLayout="column" fxLayoutAlign="center center">
+  <div fxLayout="column" fxLayoutAlign="center center" *transloco="let t" fxLayoutGap="5px">
+    <div fxLayout="row" fxLayoutAlign="end center" ngClass.gt-xs="large-screen" ngClass.xs="small-screen">
+      <button mat-button color="accent" (click)="openAll()" *ngIf="!hideButton">
+        {{t('calendar.open_all')}} <mat-icon>open_in_full</mat-icon>
+      </button>
+      <button mat-button color="accent" (click)="closeAll()" *ngIf="hideButton">
+        {{t('calendar.close_all')}} <mat-icon>close_fullscreen</mat-icon>
+      </button>
+    </div>
     <!-- CONTROLS -->
-    <app-calendar-month *ngFor="let month of calendarYear.calendarMonths" [month]="month" ngClass.gt-xs="large-screen"
-      ngClass.xs="small-screen">
-    </app-calendar-month>
+    <mat-accordion ngClass.gt-xs="large-screen" ngClass.xs="small-screen" multi #accordion="matAccordion">
+      <app-calendar-month *ngFor="let month of calendarYear.calendarMonths" [month]="month">
+      </app-calendar-month>
+    </mat-accordion>
   </div>
 </ng-container>

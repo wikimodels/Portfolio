@@ -1,4 +1,6 @@
+import { ViewChild } from '@angular/core';
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
+import { MatAccordion } from '@angular/material/expansion';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
@@ -16,10 +18,23 @@ export class CalendarYearComponent implements OnInit, OnDestroy {
 
   constructor(private calendarService: CalendarService) {}
 
+  @ViewChild('accordion', { static: false }) accordion: MatAccordion;
+  hideButton = false;
+
   ngOnInit(): void {
     this.sub = this.calendarService.calendarYear$.subscribe((value) => {
       this.calendarYear = value;
     });
+  }
+
+  openAll() {
+    this.accordion.openAll();
+    this.hideButton = !this.hideButton;
+  }
+
+  closeAll() {
+    this.accordion.closeAll();
+    this.hideButton = !this.hideButton;
   }
 
   ngOnDestroy() {

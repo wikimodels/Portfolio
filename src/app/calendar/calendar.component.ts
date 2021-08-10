@@ -14,6 +14,7 @@ import { CalendarShowDialogComponent } from './calendar-show-dialog/calendar-sho
 })
 export class CalendarComponent implements OnInit, OnDestroy {
   yearsNumbers = [];
+  windowHeight: string;
   calendarYear: CalendarYear;
   sub: Subscription;
 
@@ -37,9 +38,14 @@ export class CalendarComponent implements OnInit, OnDestroy {
 
   openShowYearDialog() {
     const dialogConfig = new MatDialogConfig();
+    dialogConfig.height = window.innerHeight * 0.9 + 'px';
+    dialogConfig.minWidth = window.innerWidth * 0.75 + 'px';
     this.matDialog.open(CalendarShowDialogComponent, dialogConfig);
   }
 
+  closeAll() {}
+
+  openAll() {}
   ngOnDestroy() {
     this.sub.unsubscribe();
   }

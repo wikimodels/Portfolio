@@ -34,3 +34,10 @@ body {
   padding-top: 20px;
   padding-bottom: 40px;
 }
+.small-screen {
+  width: 100%;
+}
+.large-screen {
+  width: 70%;
+  margin: 0 auto;
+}

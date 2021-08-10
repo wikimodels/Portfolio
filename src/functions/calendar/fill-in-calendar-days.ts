@@ -3,7 +3,8 @@ import { addLeadingZero } from './add-leading-zero';
 import { DayMomentumType } from 'src/models/enums/day-momentum-type.enum';
 import { CalendarDay } from 'src/models/calendar/calendar-day.model';
 import { DayActivityType } from 'src/models/enums/day-activity-type.enum';
-import { LOCALE } from 'src/const/locale.const';
+
+import { refactorDayNameShort } from './refactor-day-name-short';
 
 export function fillInCalendarDays(monthNumber: number, yearNumber: number) {
   const calendarDays: CalendarDay[] = [];
@@ -16,20 +17,23 @@ export function fillInCalendarDays(monthNumber: number, yearNumber: number) {
       i
     )}`;
 
-    const calendarDay: CalendarDay = {
-      dayNameShort: moment(date).locale(LOCALE).format('ddd'),
-      dayNameLong: moment(date).locale(LOCALE).format('dddd'),
+    let calendarDay: CalendarDay = {
+      dayNameShort: moment(date).format('ddd'),
+      dayNameLong: moment(date).format('dddd'),
       dayNumberNmr: i,
       dayNumberStr: addLeadingZero(i),
       dayOfWeek: moment(date).isoWeekday(),
-      dayDateStr: moment(date).locale(LOCALE).format('DD MMM YYYY'),
+      dayDateStr: moment(date).format('DD MMM YYYY'),
       dayActivityType: DayActivityType.TO_BE_DEFINED,
       dayMomentumType: DayMomentumType.PRESENT,
       dayCSS: 'mat-' + DayActivityType.TO_BE_DEFINED,
       monthNumber: monthNumber,
       yearNumber: yearNumber,
     };
+
+    calendarDay = refactorDayNameShort(calendarDay);
     calendarDays.push(calendarDay);
   }
+
   return calendarDays;
 }

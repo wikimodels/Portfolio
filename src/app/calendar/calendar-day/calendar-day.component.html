@@ -1,26 +1,28 @@
-<ng-container *ngIf="!deviceDetectorService.isMobile()">
+<div *ngIf="!deviceDetectorService.isMobile()">
   <button mat-fab [color]="day.dayActivityType" [matMenuTriggerFor]="menu" [disabled]="dayDisabled">
     {{ day.dayNumberStr }}
   </button>
-</ng-container>
+</div>
 
-<ng-container *ngIf="deviceDetectorService.isMobile()">
+<div *ngIf="deviceDetectorService.isMobile()">
   <button mat-mini-fab [color]="day.dayActivityType" [matMenuTriggerFor]="menu" [disabled]="dayDisabled">
     {{ day.dayNumberStr }}
   </button>
-</ng-container>
+</div>
 
 <mat-menu #menu="matMenu" yPosition="below">
   <ng-template matMenuContent>
-    <button mat-menu-item>{{ day.dayDateStr }}</button>
-    <button mat-menu-item [matMenuTriggerFor]="dayStatus">Статус</button>
+    <button mat-menu-item>{{ day.dayNumberStr
+      }}&#160;&#160;{{day.dayNameShort|transloco}}&#160;&#160;{{day.yearNumber}}</button>
+    <button mat-menu-item [matMenuTriggerFor]="dayStatus">{{'calendar.status'|transloco}}</button>
   </ng-template>
 </mat-menu>
 
+
 <mat-menu #dayStatus="matMenu" yPosition="below">
   <ng-template matMenuContent>
-    <button mat-menu-item (click)="changeToWorkingDay()">Рабочий</button>
-    <button mat-menu-item (click)="changeToDayOff()">Нерабочий</button>
-    <button mat-menu-item (click)="changeToBeDefined()">Не определён</button>
+    <button mat-menu-item (click)="changeToWorkingDay()">{{'calendar.working'|transloco}}</button>
+    <button mat-menu-item (click)="changeToDayOff()">{{'calendar.day_off'|transloco}}</button>
+    <button mat-menu-item (click)="changeToBeDefined()">{{'calendar.undefined'|transloco}}</button>
   </ng-template>
 </mat-menu>

@@ -1,5 +1,5 @@
 import * as moment from 'moment';
-import { LOCALE } from 'src/const/locale.const';
+
 import { CalendarDay } from 'src/models/calendar/calendar-day.model';
 import { DayActivityType } from 'src/models/enums/day-activity-type.enum';
 
@@ -19,14 +19,8 @@ export function addDaysAfterPresentMonth(
 
   for (let i = 1; i <= 7 - lastDayOfWeek; i++) {
     const dayAfter: CalendarDay = {
-      dayNameShort: moment(lastDayOfMonthDate)
-        .add(i, 'days')
-        .locale(LOCALE)
-        .format('ddd'),
-      dayNameLong: moment(lastDayOfMonthDate)
-        .add(i, 'days')
-        .locale(LOCALE)
-        .format('dddd'),
+      dayNameShort: moment(lastDayOfMonthDate).add(i, 'days').format('ddd'),
+      dayNameLong: moment(lastDayOfMonthDate).add(i, 'days').format('dddd'),
       dayNumberStr: addLeadingZero(
         moment(lastDayOfMonthDate).add(i, 'days').date()
       ),
@@ -35,7 +29,6 @@ export function addDaysAfterPresentMonth(
       dayActivityType: DayActivityType.UNDEFINED,
       dayDateStr: moment(lastDayOfMonthDate)
         .add(i, 'days')
-        .locale(LOCALE)
         .format('DD MMM YYYY'),
       dayMomentumType: DayMomentumType.FUTURE,
       dayCSS: 'mat-' + DayActivityType.UNDEFINED,

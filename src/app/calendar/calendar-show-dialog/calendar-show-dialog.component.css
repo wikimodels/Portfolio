@@ -1,0 +1,9 @@
+.badge {
+  display: inline-block;
+  border-radius: 12px;
+  font-weight: bold;
+  height: 17px;
+  padding: 2px 3px 2px 3px;
+  text-align: center;
+  min-width: 17px;
+}

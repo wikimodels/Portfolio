@@ -7,6 +7,12 @@ import { DayMomentumType } from 'src/models/enums/day-momentum-type.enum';
 import { DayActivityType } from 'src/models/enums/day-activity-type.enum';
 import { CalendarShowDialogComponent } from '../calendar-show-dialog/calendar-show-dialog.component';
 import { TimeService } from '../services/time.service';
+import {
+  translate,
+  TranslocoModule,
+  TranslocoService,
+} from '@ngneat/transloco';
+import { partitionArray } from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-calendar-day',
@@ -15,7 +21,7 @@ import { TimeService } from '../services/time.service';
 })
 export class CalendarDayComponent implements OnInit {
   @Input() day: CalendarDay;
-
+  dayDate: string;
   dayDisabled: boolean;
   dayIsWorking: boolean;
   date: string;
@@ -23,9 +29,7 @@ export class CalendarDayComponent implements OnInit {
   constructor(
     private router: Router,
     private matDialog: MatDialog,
-    //private snackbar: BasicSnackbarService,
     private timeService: TimeService,
-    //private calendarYearViewService: CalendarYearViewService,
     public deviceDetectorService: DeviceDetectorService
   ) {}
 

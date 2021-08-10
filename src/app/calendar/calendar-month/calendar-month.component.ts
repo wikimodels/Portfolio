@@ -9,7 +9,7 @@ import { CalendarMonth } from 'src/models/calendar/calendar-month.model';
 })
 export class CalendarMonthComponent implements OnInit {
   @Input() month: CalendarMonth;
-
+  monthName = 'calendar.January';
   monthNumber: number;
   panelState = false;
   constructor(private route: ActivatedRoute, private router: Router) {}

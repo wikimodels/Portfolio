@@ -25,10 +25,10 @@ export class CalendarService {
   }
 
   createCalendarYear(
-    monthActivityStart: number,
-    monthActivityEnd: number,
+    monthFirst: number,
+    monthLast: number,
     yearNumber: number
   ): CalendarYear {
-    return fillInCalendarYear(monthActivityStart, monthActivityEnd, yearNumber);
+    return fillInCalendarYear(monthFirst, monthLast, yearNumber);
   }
 }

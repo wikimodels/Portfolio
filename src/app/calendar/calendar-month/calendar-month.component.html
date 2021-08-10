@@ -1,6 +1,6 @@
 <mat-expansion-panel [expanded]="panelState" *transloco="let t">
   <mat-expansion-panel-header>
-    <mat-panel-title>{{ month.monthNameLong }}</mat-panel-title>
+    <mat-panel-title>{{ t(month.monthNameLong) }}</mat-panel-title>
   </mat-expansion-panel-header>
   <ng-template matExpansionPanelContent>
     <mat-grid-list cols="7" rowHeight="1:1" ngClass.xs="small-screen" ngClass.gt-xs="large-screen">

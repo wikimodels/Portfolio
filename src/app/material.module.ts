@@ -14,8 +14,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
 import { MatRippleModule, MatNativeDateModule } from '@angular/material/core';
-
+import { MatBadgeModule } from '@angular/material/badge';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatChipsModule } from '@angular/material/chips';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
@@ -38,10 +39,12 @@ const modules = [
   MatTabsModule,
   MatTableModule,
   MatInputModule,
+  MatChipsModule,
+  MatBadgeModule,
+  MatRadioModule,
   MatSliderModule,
   ScrollingModule,
   MatDialogModule,
-  MatRadioModule,
   MatSelectModule,
   MatRippleModule,
   MatButtonModule,

@@ -1,5 +1,5 @@
 import * as moment from 'moment';
-import { LOCALE } from 'src/const/locale.const';
+
 import { CalendarDay } from 'src/models/calendar/calendar-day.model';
 import { DayActivityType } from 'src/models/enums/day-activity-type.enum';
 
@@ -19,21 +19,12 @@ export function addDaysBeforePresentMonth(
 
   for (let i = 0; i < firstDayOfWeek - 1; i++) {
     const dayBefore: CalendarDay = {
-      dayNameShort: moment(firstDayOfMonthDate)
-        .date(-i)
-        .locale(LOCALE)
-        .format('ddd'),
-      dayNameLong: moment(firstDayOfMonthDate)
-        .date(-i)
-        .locale(LOCALE)
-        .format('dddd'),
+      dayNameShort: moment(firstDayOfMonthDate).date(-i).format('ddd'),
+      dayNameLong: moment(firstDayOfMonthDate).date(-i).format('dddd'),
       dayNumberStr: addLeadingZero(moment(firstDayOfMonthDate).date(-i).date()),
       dayNumberNmr: moment(firstDayOfMonthDate).date(-i).date(),
       dayOfWeek: moment(firstDayOfMonthDate).date(-i).isoWeekday(),
-      dayDateStr: moment(firstDayOfMonthDate)
-        .date(-i)
-        .locale(LOCALE)
-        .format('DD MMM YYYY'),
+      dayDateStr: moment(firstDayOfMonthDate).date(-i).format('DD MMM YYYY'),
       dayMomentumType: DayMomentumType.PAST,
       dayActivityType: DayActivityType.UNDEFINED,
       dayCSS: 'mat-' + DayActivityType.UNDEFINED,

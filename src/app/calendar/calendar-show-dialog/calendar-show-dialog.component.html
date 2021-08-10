@@ -1,1 +1,11 @@
-<p>calendar-show-dialog works!</p>
+<ng-container *transloco="let t">
+  <h2 style="text-align: center;">{{t('calendar.year')}} {{calendarYearReport.yearNumber}}</h2>
+  <div *ngFor="let month of calendarYearReport.calendarMonthReports">
+    <h3>{{t(month.monthNameLong)}}</h3>
+    <ul>
+      <li>{{t('calendar.working_days')}} - <span class="badge mat-working-day">{{month.daysWorking}}</span></li>
+      <li>{{t('calendar.days_off')}} - <span class="badge mat-day-off">{{month.daysOff}}</span></li>
+      <li>{{t('calendar.undefined_days')}} - <span class="badge mat-to-be-defined">{{month.daysToBeDefined}}</span></li>
+    </ul>
+  </div>
+</ng-container>
