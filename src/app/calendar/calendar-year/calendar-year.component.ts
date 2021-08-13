@@ -27,16 +27,6 @@ export class CalendarYearComponent implements OnInit, OnDestroy {
     });
   }
 
-  openAll() {
-    this.accordion.openAll();
-    this.hideButton = !this.hideButton;
-  }
-
-  closeAll() {
-    this.accordion.closeAll();
-    this.hideButton = !this.hideButton;
-  }
-
   ngOnDestroy() {
     this.sub.unsubscribe();
   }

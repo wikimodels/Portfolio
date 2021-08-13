@@ -1,28 +1,30 @@
-<div *ngIf="!deviceDetectorService.isMobile()">
-  <button mat-fab [color]="day.dayActivityType" [matMenuTriggerFor]="menu" [disabled]="dayDisabled">
-    {{ day.dayNumberStr }}
-  </button>
-</div>
+<ng-container *transloco="let t">
+  <div *ngIf="!deviceDetectorService.isMobile()">
+    <button mat-fab [color]="day.dayActivityType" [matMenuTriggerFor]="menu" [disabled]="dayDisabled">
+      {{ day.dayNumberStr }}
+    </button>
+  </div>
 
-<div *ngIf="deviceDetectorService.isMobile()">
-  <button mat-mini-fab [color]="day.dayActivityType" [matMenuTriggerFor]="menu" [disabled]="dayDisabled">
-    {{ day.dayNumberStr }}
-  </button>
-</div>
+  <div *ngIf="deviceDetectorService.isMobile()">
+    <button mat-mini-fab [color]="day.dayActivityType" [matMenuTriggerFor]="menu" [disabled]="dayDisabled">
+      {{ day.dayNumberStr }}
+    </button>
+  </div>
 
-<mat-menu #menu="matMenu" yPosition="below">
-  <ng-template matMenuContent>
-    <button mat-menu-item>{{ day.dayNumberStr
-      }}&#160;&#160;{{day.dayNameShort|transloco}}&#160;&#160;{{day.yearNumber}}</button>
-    <button mat-menu-item [matMenuTriggerFor]="dayStatus">{{'calendar.status'|transloco}}</button>
-  </ng-template>
-</mat-menu>
+  <mat-menu #menu="matMenu" yPosition="below">
+    <ng-template matMenuContent>
+      <button mat-menu-item>{{ day.dayNumberStr
+        }}&#160;&#160;{{t(day.dayNameShort)}}&#160;&#160;{{day.yearNumber}}</button>
+      <button mat-menu-item [matMenuTriggerFor]="dayStatus" name="statusButton">{{t('calendar.status')}}</button>
+    </ng-template>
+  </mat-menu>
 
 
-<mat-menu #dayStatus="matMenu" yPosition="below">
-  <ng-template matMenuContent>
-    <button mat-menu-item (click)="changeToWorkingDay()">{{'calendar.working'|transloco}}</button>
-    <button mat-menu-item (click)="changeToDayOff()">{{'calendar.day_off'|transloco}}</button>
-    <button mat-menu-item (click)="changeToBeDefined()">{{'calendar.undefined'|transloco}}</button>
-  </ng-template>
-</mat-menu>
+  <mat-menu #dayStatus="matMenu" yPosition="below">
+    <ng-template matMenuContent>
+      <button mat-menu-item (click)="changeToWorkingDay()" name="dayWorking">{{t('calendar.working')}}</button>
+      <button mat-menu-item (click)="changeToDayOff()" name="dayOff">{{t('calendar.day_off')}}</button>
+      <button mat-menu-item (click)="changeToBeDefined()" name="dayToBeDefined">{{t('calendar.undefined')}}</button>
+    </ng-template>
+  </mat-menu>
+</ng-container>

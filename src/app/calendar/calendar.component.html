@@ -1,10 +1,11 @@
 <div class="container" *transloco="let t">
   <div fxLayout="column" fxLayoutAlign="center" fxLayoutGap="10px">
-    <button mat-button color="accent" (click)="openShowYearDialog()">
+    <button mat-button color="accent" id="calendarButton" (click)="openShowYearDialog()">
       <span style="font-size: 24px;">{{t('calendar.calendar')}} {{calendarYear.yearNumber}}</span>
       <mat-icon>today</mat-icon>
     </button>
-    <button mat-button color="warn" (click)="openCreateYearDialog()">{{t('calendar.create_year')}}</button>
+    <button id="createYearButton" mat-button color="warn"
+      (click)="openCreateYearDialog()">{{t('calendar.create_year')}}</button>
     <app-calendar-year></app-calendar-year>
   </div>
 </div>

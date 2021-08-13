@@ -5,7 +5,7 @@
     <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="15px">
       <mat-form-field appearance="fill" class="form">
         <mat-label>{{t('calendar.year')}}</mat-label>
-        <mat-select formControlName="yearNumber">
+        <mat-select formControlName="yearNumber" id="yearNumber">
           <mat-option *ngFor="let year of years" [value]="year.value">{{
             year.key
             }}</mat-option>
@@ -16,7 +16,7 @@
 
       <mat-form-field appearance="fill" class="form">
         <mat-label>{{t('calendar.first_month')}}</mat-label>
-        <mat-select formControlName="monthFirst">
+        <mat-select formControlName="monthFirst" id="monthFirst">
           <mat-option *ngFor="let month of months" [value]="month.monthNumber">{{t(
             month.monthName)
             }}
@@ -28,7 +28,7 @@
 
       <mat-form-field appearance="fill" class="form">
         <mat-label>{{t('calendar.last_month')}}</mat-label>
-        <mat-select formControlName="monthLast">
+        <mat-select formControlName="monthLast" id="monthLast">
           <mat-option *ngFor="let month of months" [value]="month.monthNumber">{{t(
             month.monthName)
             }}</mat-option>
@@ -41,11 +41,11 @@
       </mat-error>
 
       <div fxLayout="row" fxLayoutAlign="space-between">
-        <button mat-button color="primary" (click)="onSubmit()">
-          {{t('calendar.save')}}
-        </button>
         <button mat-button (click)="cancel()">
           {{t('calendar.cancel')}}
+        </button>
+        <button mat-button color="primary" (click)="onSubmit()" id="saveYearButton">
+          {{t('calendar.save')}}
         </button>
       </div>
     </div>

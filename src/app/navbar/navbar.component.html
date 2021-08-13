@@ -1,23 +1,25 @@
-<mat-toolbar class="mat-elevation-z6" *transloco="let t">
-  <div fxLayout="row" fxLayoutAlign="space-between center" style="width: 100%;">
-    <div class='icon' id='logo' (click)="goHome()">
-      {{t('portfolio')}}
+<ng-container *transloco="let t">
+  <mat-toolbar class="mat-elevation-z6">
+    <div fxLayout="row" fxLayoutAlign="space-between center" style="width: 100%;">
+      <div class='icon' id='logo' (click)="goHome()">
+        {{t('portfolio')}}
+      </div>
+      <div>
+        <button mat-mini-fab (click)="onLangChange('en')" id="en">en</button>
+        <button mat-mini-fab (click)="onLangChange('ru')" id="ru">ru</button>
+        <button mat-icon-button [matMenuTriggerFor]="menu" class='menu-button'>
+          <mat-icon>more_vert</mat-icon>
+        </button>
+      </div>
     </div>
-    <div>
-      <button mat-mini-fab (click)="onLangChange('en')">en</button>
-      <button mat-mini-fab (click)="onLangChange('ru')">ru</button>
-      <button mat-icon-button [matMenuTriggerFor]="menu" class='menu-button'>
-        <mat-icon>more_vert</mat-icon>
-      </button>
-    </div>
-  </div>
-</mat-toolbar>
+  </mat-toolbar>
 
-<mat-menu #menu="matMenu">
-  <ng-template matMenuContent>
-    <button mat-menu-item (click)="goToCalendar()" class='calendar'>
-      <mat-icon>today</mat-icon>
-      <span>{{'calendar.calendar'|transloco}}</span>
-    </button>
-  </ng-template>
-</mat-menu>
+  <mat-menu #menu="matMenu">
+    <ng-template matMenuContent>
+      <button mat-menu-item (click)="goToCalendar()" class='calendar'>
+        <mat-icon>today</mat-icon>
+        <span>{{t('calendar.calendar')}}</span>
+      </button>
+    </ng-template>
+  </mat-menu>
+</ng-container>
